@@ -58,10 +58,10 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
   }
 
   return (
-    <div className="fixed inset-0 z-0">
+    <div className="fixed inset-0 z-0 overflow-hidden">
       <video
         ref={videoRef}
-        className="w-full h-full object-cover"
+        className="absolute top-0 left-0 w-full h-full object-cover"
         muted
         playsInline
         preload="auto"
