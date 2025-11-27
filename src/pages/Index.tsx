@@ -7,7 +7,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen bg-background overflow-hidden">
-      <VideoBackground onVideoReady={() => setShowContent(true)} />
+      <VideoBackground onVideoEnd={() => setShowContent(true)} />
       <HeroContent show={showContent} />
     </div>
   );
