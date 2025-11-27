@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface VideoBackgroundProps {
   onVideoEnd: () => void;
@@ -6,6 +6,7 @@ interface VideoBackgroundProps {
 
 export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -24,7 +25,15 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
       onVideoEnd();
     };
 
+    const handleError = () => {
+      console.error("Video failed to load");
+      setHasError(true);
+      // Show content immediately if video fails
+      onVideoEnd();
+    };
+
     video.addEventListener("ended", handleEnded);
+    video.addEventListener("error", handleError);
     
     // Ensure video plays
     video.play().catch(err => {
@@ -37,8 +46,16 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
 
     return () => {
       video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("error", handleError);
     };
   }, [onVideoEnd]);
+
+  // Fallback gradient background if video fails
+  if (hasError) {
+    return (
+      <div className="fixed inset-0 z-0 bg-gradient-to-br from-background via-card to-background" />
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-0">
