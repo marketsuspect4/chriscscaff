@@ -48,9 +48,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          cyan: "hsl(var(--brand-cyan))",
-          blue: "hsl(var(--brand-blue))",
+          black: "hsl(var(--brand-black))",
           gold: "hsl(var(--brand-gold))",
+          "gold-light": "hsl(var(--brand-gold-light))",
           dark: "hsl(var(--brand-dark))",
         },
       },
