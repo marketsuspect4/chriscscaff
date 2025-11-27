@@ -65,25 +65,6 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* Features Grid */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-gradient-brand p-6 rounded-lg border border-brand-gold/20 hover:border-brand-gold/50 transition-all duration-300 hover:shadow-gold"
-            >
-              <feature.icon className="w-12 h-12 text-brand-gold mb-4" />
-              <h3 className="text-xl font-bold mb-2 text-brand-gold">{feature.title}</h3>
-              <p className="text-brand-steel-light">{feature.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
       {/* Vehicle Gallery */}
       <div className="container mx-auto px-4 py-12">
         <motion.div
@@ -121,6 +102,25 @@ const About = () => {
             ))}
           </div>
         </motion.div>
+      </div>
+
+      {/* Features Grid */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gradient-brand p-6 rounded-lg border border-brand-gold/20 hover:border-brand-gold/50 transition-all duration-300 hover:shadow-gold"
+            >
+              <feature.icon className="w-12 h-12 text-brand-gold mb-4" />
+              <h3 className="text-xl font-bold mb-2 text-brand-gold">{feature.title}</h3>
+              <p className="text-brand-steel-light">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* Contact Section */}
