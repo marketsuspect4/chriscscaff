@@ -38,13 +38,14 @@ All colors MUST be HSL.
 
     --radius: 1rem;
 
-    --brand-cyan: 192 100% 50%;
-    --brand-blue: 200 100% 45%;
-    --brand-gold: 45 80% 55%;
-    --brand-dark: 220 30% 8%;
+    --brand-black: 0 0% 10%;
+    --brand-gold: 38 75% 48%;
+    --brand-gold-light: 42 85% 60%;
+    --brand-dark: 0 0% 5%;
     
-    --gradient-brand: linear-gradient(135deg, hsl(192 100% 50%) 0%, hsl(200 100% 45%) 100%);
-    --shadow-brand: 0 10px 40px -5px hsl(192 100% 50% / 0.4);
+    --gradient-brand: linear-gradient(135deg, hsl(0 0% 10%) 0%, hsl(0 0% 15%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 75% 48%) 0%, hsl(42 85% 60%) 100%);
+    --shadow-brand: 0 10px 40px -5px hsl(38 75% 48% / 0.4);
     --shadow-lg: 0 20px 60px -10px hsl(0 0% 0% / 0.6);
 
     --font-heading: 'Outfit', sans-serif;
