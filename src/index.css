@@ -9,76 +9,81 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 220 25% 92%;
-    --foreground: 220 20% 15%;
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 98%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 98%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 192 100% 50%;
+    --primary: 38 75% 48%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 100% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 25%;
+    --secondary-foreground: 38 75% 48%;
 
     --muted: 220 15% 85%;
-    --muted-foreground: 220 15% 40%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 45 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 42 85% 55%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 80%;
     --input: 220 15% 85%;
-    --ring: 192 100% 50%;
+    --ring: 38 75% 48%;
 
     --radius: 1rem;
 
-    --brand-black: 0 0% 10%;
+    --brand-black: 0 0% 8%;
     --brand-gold: 38 75% 48%;
-    --brand-gold-light: 42 85% 60%;
+    --brand-gold-light: 42 85% 55%;
     --brand-dark: 0 0% 5%;
+    --brand-steel: 200 8% 38%;
+    --brand-steel-light: 200 8% 48%;
     
-    --gradient-brand: linear-gradient(135deg, hsl(0 0% 10%) 0%, hsl(0 0% 15%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 75% 48%) 0%, hsl(42 85% 60%) 100%);
+    --gradient-brand: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 0% 15%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 75% 48%) 0%, hsl(42 85% 55%) 100%);
+    --gradient-steel: linear-gradient(135deg, hsl(200 8% 35%) 0%, hsl(200 8% 48%) 100%);
     --shadow-brand: 0 10px 40px -5px hsl(38 75% 48% / 0.4);
+    --shadow-gold: 0 20px 60px -10px hsl(38 75% 48% / 0.5);
     --shadow-lg: 0 20px 60px -10px hsl(0 0% 0% / 0.6);
+    --shadow-steel: 0 10px 40px -5px hsl(200 8% 38% / 0.3);
 
     --font-heading: 'Outfit', sans-serif;
   }
 
   .dark {
-    --background: 220 20% 50%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 12%;
+    --foreground: 38 75% 48%;
 
-    --card: 220 18% 55%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 15%;
+    --card-foreground: 42 85% 55%;
 
-    --popover: 220 18% 55%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 15%;
+    --popover-foreground: 42 85% 55%;
 
-    --primary: 192 100% 50%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 38 75% 48%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 200 100% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 200 8% 38%;
+    --secondary-foreground: 38 75% 48%;
 
-    --muted: 220 15% 60%;
-    --muted-foreground: 0 0% 95%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 200 8% 65%;
 
-    --accent: 45 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 42 85% 55%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 65%;
-    --input: 220 15% 60%;
-    --ring: 192 100% 50%;
+    --border: 200 8% 25%;
+    --input: 0 0% 18%;
+    --ring: 38 75% 48%;
   }
 }
 

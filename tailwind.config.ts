@@ -52,6 +52,8 @@ export default {
           gold: "hsl(var(--brand-gold))",
           "gold-light": "hsl(var(--brand-gold-light))",
           dark: "hsl(var(--brand-dark))",
+          steel: "hsl(var(--brand-steel))",
+          "steel-light": "hsl(var(--brand-steel-light))",
         },
       },
       fontFamily: {

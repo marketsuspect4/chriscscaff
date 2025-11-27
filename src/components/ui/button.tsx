@@ -9,14 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98]",
+        default: "bg-gradient-to-br from-brand-gold to-brand-gold-light text-brand-black shadow-[var(--shadow-brand)] hover:shadow-[var(--shadow-gold)] hover:scale-[1.02] active:scale-[0.98]",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 active:scale-[0.98]",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground active:scale-[0.98]",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-[0.98]",
-        ghost: "hover:bg-accent hover:text-accent-foreground active:scale-[0.98]",
-        link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-to-br from-brand-gold to-brand-gold-light text-brand-dark shadow-[var(--shadow-brand)] hover:shadow-[0_20px_60px_-5px_hsl(38_75%_48%/0.6)] hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.99] active:translate-y-0 active:shadow-[0_8px_30px_-5px_hsl(38_75%_48%/0.4)]",
-        "hero-secondary": "bg-gradient-to-br from-brand-black to-brand-dark text-brand-gold border-2 border-brand-gold/30 shadow-lg hover:shadow-[0_20px_60px_-5px_hsl(38_75%_48%/0.5)] hover:border-brand-gold/50 hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.99] active:translate-y-0 active:shadow-lg",
+        outline: "border-2 border-brand-steel bg-transparent text-brand-steel hover:bg-brand-steel/10 hover:border-brand-steel-light active:scale-[0.98]",
+        secondary: "bg-gradient-to-br from-brand-steel to-brand-steel-light text-brand-gold shadow-[var(--shadow-steel)] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
+        ghost: "text-brand-gold hover:bg-brand-gold/10 active:scale-[0.98]",
+        link: "text-brand-gold underline-offset-4 hover:underline",
+        hero: "bg-gradient-to-br from-brand-gold to-brand-gold-light text-brand-black shadow-[var(--shadow-brand)] hover:shadow-[0_20px_60px_-5px_hsl(38_75%_48%/0.6)] hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.99] active:translate-y-0 active:shadow-[0_8px_30px_-5px_hsl(38_75%_48%/0.4)]",
+        "hero-secondary": "bg-gradient-to-br from-brand-black to-brand-dark text-brand-gold border-2 border-brand-gold/40 shadow-lg hover:shadow-[0_20px_60px_-5px_hsl(38_75%_48%/0.5)] hover:border-brand-gold/60 hover:scale-[1.03] hover:-translate-y-0.5 active:scale-[0.99] active:translate-y-0 active:shadow-lg",
+        steel: "bg-gradient-to-br from-brand-steel to-brand-steel-light text-white shadow-[var(--shadow-steel)] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
       },
       size: {
         default: "h-10 px-4 py-2",

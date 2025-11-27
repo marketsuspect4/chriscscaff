@@ -11,29 +11,38 @@ const Dashboard = () => {
   const userName = "Mr Smith";
 
   return (
-    <div className="min-h-screen bg-[hsl(220,25%,18%)]">
+    <div className="min-h-screen bg-gradient-to-br from-[hsl(0,0%,8%)] via-[hsl(0,0%,12%)] to-[hsl(200,8%,15%)]">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="max-w-4xl mx-auto p-6"
+        className="max-w-5xl mx-auto p-6"
       >
         {/* Header */}
         <div className="flex items-start justify-between mb-12">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-2">
+            <motion.h1 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-brand-gold via-brand-gold-light to-brand-gold bg-clip-text text-transparent mb-2"
+            >
               My Projects
-            </h1>
-            <p className="text-muted-foreground text-lg">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-brand-steel-light text-lg font-medium"
+            >
               Welcome back, {userName}
-            </p>
+            </motion.p>
           </div>
           <Button
-            variant="ghost"
+            variant="steel"
             size="icon"
             onClick={() => navigate("/")}
-            className="rounded-xl bg-card border border-border hover:bg-card/80"
+            className="rounded-xl h-12 w-12"
           >
-            <Home className="w-5 h-5 text-brand-gold" />
+            <Home className="w-5 h-5" />
           </Button>
         </div>
 
@@ -42,41 +51,43 @@ const Dashboard = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-card border-2 border-border rounded-2xl p-6 mb-8 flex items-center gap-6"
+          className="bg-gradient-to-br from-brand-black/80 to-brand-dark/80 backdrop-blur-sm border-2 border-brand-gold/20 rounded-3xl p-8 mb-10 flex items-center gap-6 shadow-[var(--shadow-gold)] hover:border-brand-gold/30 transition-all"
         >
-          <div className="bg-brand-gold/20 p-4 rounded-xl">
-            <Clock className="w-8 h-8 text-brand-gold" />
+          <div className="bg-gradient-to-br from-brand-gold to-brand-gold-light p-5 rounded-2xl shadow-lg">
+            <Clock className="w-10 h-10 text-brand-black" />
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-extrabold text-foreground">8AM</h2>
-            <p className="text-muted-foreground uppercase text-sm tracking-wider">Next Site Visit</p>
+            <h2 className="text-4xl font-extrabold text-brand-gold mb-1">8AM</h2>
+            <p className="text-brand-steel-light uppercase text-sm tracking-widest font-bold">Next Site Visit</p>
           </div>
-          <div className="bg-brand-gold/10 px-4 py-2 rounded-lg">
-            <span className="text-brand-gold font-bold uppercase text-sm">Tuesday</span>
+          <div className="bg-brand-gold/15 backdrop-blur-sm px-6 py-3 rounded-xl border border-brand-gold/30">
+            <span className="text-brand-gold font-extrabold uppercase text-base tracking-wide">Tuesday</span>
           </div>
         </motion.div>
 
         {/* Ongoing Jobs Section */}
-        <div className="mb-8">
-          <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-4">
+        <div className="mb-10">
+          <h2 className="text-xs font-extrabold text-brand-steel-light uppercase tracking-widest mb-6 flex items-center gap-3">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-brand-steel to-transparent"></div>
             Ongoing Jobs
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-brand-steel to-transparent"></div>
           </h2>
 
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-5">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-card border border-border rounded-xl p-6 flex items-center gap-4 hover:bg-card/80 transition-colors cursor-pointer"
+              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 flex items-center gap-5 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
             >
-              <div className="bg-primary/20 p-3 rounded-xl">
-                <Hammer className="w-6 h-6 text-primary" />
+              <div className="bg-gradient-to-br from-brand-gold to-brand-gold-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Hammer className="w-7 h-7 text-brand-black" />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-extrabold text-foreground mb-1">
+                <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
                   42 Riverside Drive
                 </h3>
-                <p className="text-muted-foreground text-sm">Extension</p>
+                <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Extension</p>
               </div>
             </motion.div>
 
@@ -84,35 +95,37 @@ const Dashboard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-card border border-border rounded-xl p-6 flex items-center gap-4 hover:bg-card/80 transition-colors cursor-pointer"
+              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 flex items-center gap-5 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
             >
-              <div className="bg-accent/20 p-3 rounded-xl">
-                <Hammer className="w-6 h-6 text-accent" />
+              <div className="bg-gradient-to-br from-brand-steel to-brand-steel-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Hammer className="w-7 h-7 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-extrabold text-foreground mb-1">
+                <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
                   19 High Street
                 </h3>
-                <p className="text-muted-foreground text-sm">Chimney Stack</p>
+                <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Chimney Stack</p>
               </div>
             </motion.div>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-5">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             onClick={() => navigate("/quote-selection")}
-            className="bg-card border-2 border-border hover:border-primary/30 rounded-xl p-6 text-left transition-all group"
+            className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-gold/30 hover:border-brand-gold/50 rounded-2xl p-8 text-left transition-all hover:shadow-[var(--shadow-gold)] hover:scale-[1.02]"
           >
-            <div className="flex items-start gap-3 mb-3">
-              <Plus className="w-6 h-6 text-brand-gold" />
-              <h3 className="text-xl font-extrabold text-foreground">New Quote</h3>
+            <div className="flex items-start gap-4 mb-4">
+              <div className="bg-gradient-to-br from-brand-gold to-brand-gold-light p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <Plus className="w-7 h-7 text-brand-black" />
+              </div>
+              <h3 className="text-2xl font-extrabold text-brand-gold group-hover:text-brand-gold-light transition-colors">New Quote</h3>
             </div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-brand-steel-light text-sm font-medium leading-relaxed">
               Request a price estimate for a new project
             </p>
           </motion.button>
@@ -121,13 +134,15 @@ const Dashboard = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="bg-card border-2 border-border hover:border-accent/30 rounded-xl p-6 text-left transition-all group"
+            className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/40 hover:border-brand-gold/50 rounded-2xl p-8 text-left transition-all hover:shadow-[var(--shadow-steel)] hover:scale-[1.02]"
           >
-            <div className="flex items-start gap-3 mb-3">
-              <AlertCircle className="w-6 h-6 text-accent" />
-              <h3 className="text-xl font-extrabold text-foreground">Need Changes?</h3>
+            <div className="flex items-start gap-4 mb-4">
+              <div className="bg-gradient-to-br from-brand-steel to-brand-steel-light p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                <AlertCircle className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-2xl font-extrabold text-brand-gold group-hover:text-brand-gold-light transition-colors">Need Changes?</h3>
             </div>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-brand-steel-light text-sm font-medium leading-relaxed">
               Request adaptations or strike on current jobs
             </p>
           </motion.button>
