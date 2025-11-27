@@ -78,16 +78,49 @@ const Dashboard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 flex items-center gap-5 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
+              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
             >
-              <div className="bg-gradient-to-br from-brand-gold to-brand-gold-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <Hammer className="w-7 h-7 text-brand-black" />
+              <div className="flex items-start gap-5 mb-4">
+                <div className="bg-gradient-to-br from-brand-gold to-brand-gold-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                  <Hammer className="w-7 h-7 text-brand-black" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
+                    42 Riverside Drive
+                  </h3>
+                  <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Extension</p>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
-                  42 Riverside Drive
-                </h3>
-                <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Extension</p>
+              
+              <div className="space-y-3 border-t border-brand-steel/20 pt-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Client</span>
+                  <span className="text-brand-gold-light font-bold">Mrs. Johnson</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Started</span>
+                  <span className="text-brand-gold-light font-bold">15 Nov 2024</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Completion</span>
+                  <span className="text-brand-gold-light font-bold">28 Feb 2025</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Budget</span>
+                  <span className="text-brand-gold font-extrabold">£45,000</span>
+                </div>
+                <div className="pt-2">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-brand-steel-light text-xs uppercase tracking-wider">Progress</span>
+                    <span className="text-brand-gold-light font-bold">65%</span>
+                  </div>
+                  <div className="w-full bg-brand-steel/20 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-brand-gold to-brand-gold-light h-2 rounded-full" style={{ width: '65%' }}></div>
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <span className="inline-block bg-brand-gold/20 text-brand-gold px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wide">On Schedule</span>
+                </div>
               </div>
             </motion.div>
 
@@ -95,16 +128,49 @@ const Dashboard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 flex items-center gap-5 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
+              className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/30 rounded-2xl p-6 hover:border-brand-gold/40 transition-all cursor-pointer hover:shadow-[var(--shadow-brand)]"
             >
-              <div className="bg-gradient-to-br from-brand-steel to-brand-steel-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
-                <Hammer className="w-7 h-7 text-white" />
+              <div className="flex items-start gap-5 mb-4">
+                <div className="bg-gradient-to-br from-brand-steel to-brand-steel-light p-4 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                  <Hammer className="w-7 h-7 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
+                    19 High Street
+                  </h3>
+                  <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Chimney Stack Repair</p>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-extrabold text-brand-gold mb-1 group-hover:text-brand-gold-light transition-colors">
-                  19 High Street
-                </h3>
-                <p className="text-brand-steel-light text-sm font-medium uppercase tracking-wide">Chimney Stack</p>
+              
+              <div className="space-y-3 border-t border-brand-steel/20 pt-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Client</span>
+                  <span className="text-brand-gold-light font-bold">Mr. Davies</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Started</span>
+                  <span className="text-brand-gold-light font-bold">02 Jan 2025</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Completion</span>
+                  <span className="text-brand-gold-light font-bold">15 Mar 2025</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Budget</span>
+                  <span className="text-brand-gold font-extrabold">£18,500</span>
+                </div>
+                <div className="pt-2">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-brand-steel-light text-xs uppercase tracking-wider">Progress</span>
+                    <span className="text-brand-gold-light font-bold">35%</span>
+                  </div>
+                  <div className="w-full bg-brand-steel/20 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-brand-steel to-brand-steel-light h-2 rounded-full" style={{ width: '35%' }}></div>
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <span className="inline-block bg-amber-500/20 text-amber-400 px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wide">Weather Delay</span>
+                </div>
               </div>
             </motion.div>
           </div>
