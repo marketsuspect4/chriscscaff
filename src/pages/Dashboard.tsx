@@ -94,20 +94,12 @@ const Dashboard = () => {
               
               <div className="space-y-3 border-t border-brand-steel/20 pt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Client</span>
-                  <span className="text-brand-gold-light font-bold">Mrs. Johnson</span>
-                </div>
-                <div className="flex justify-between items-center">
                   <span className="text-brand-steel-light text-xs uppercase tracking-wider">Started</span>
                   <span className="text-brand-gold-light font-bold">15 Nov 2024</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-brand-steel-light text-xs uppercase tracking-wider">Completion</span>
                   <span className="text-brand-gold-light font-bold">28 Feb 2025</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Budget</span>
-                  <span className="text-brand-gold font-extrabold">£45,000</span>
                 </div>
                 <div className="pt-2">
                   <div className="flex justify-between items-center mb-2">
@@ -144,20 +136,12 @@ const Dashboard = () => {
               
               <div className="space-y-3 border-t border-brand-steel/20 pt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Client</span>
-                  <span className="text-brand-gold-light font-bold">Mr. Davies</span>
-                </div>
-                <div className="flex justify-between items-center">
                   <span className="text-brand-steel-light text-xs uppercase tracking-wider">Started</span>
                   <span className="text-brand-gold-light font-bold">02 Jan 2025</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-brand-steel-light text-xs uppercase tracking-wider">Completion</span>
                   <span className="text-brand-gold-light font-bold">15 Mar 2025</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-brand-steel-light text-xs uppercase tracking-wider">Budget</span>
-                  <span className="text-brand-gold font-extrabold">£18,500</span>
                 </div>
                 <div className="pt-2">
                   <div className="flex justify-between items-center mb-2">
