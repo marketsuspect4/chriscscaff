@@ -49,7 +49,7 @@ const About = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="pt-24 pb-12 px-4">
+      <div className="pt-24 pb-2 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ const About = () => {
       </div>
 
       {/* Vehicle Gallery */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 pt-2 pb-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
