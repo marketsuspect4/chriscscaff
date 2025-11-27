@@ -1,32 +1,35 @@
 import { useRef, useEffect } from "react";
 
 interface VideoBackgroundProps {
-  onVideoReady: () => void;
+  onVideoEnd: () => void;
 }
 
-export const VideoBackground = ({ onVideoReady }: VideoBackgroundProps) => {
+export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => {
-      onVideoReady();
+    const handleEnded = () => {
+      onVideoEnd();
     };
 
-    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("ended", handleEnded);
     
     // Ensure video plays
     video.play().catch(err => {
       console.log("Video autoplay prevented:", err);
-      onVideoReady();
+      // If autoplay fails, still show content after a delay
+      setTimeout(() => {
+        onVideoEnd();
+      }, 100);
     });
 
     return () => {
-      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("ended", handleEnded);
     };
-  }, [onVideoReady]);
+  }, [onVideoEnd]);
 
   return (
     <div className="fixed inset-0 z-0">
@@ -34,7 +37,6 @@ export const VideoBackground = ({ onVideoReady }: VideoBackgroundProps) => {
         ref={videoRef}
         className="w-full h-full object-cover"
         muted
-        loop
         playsInline
         preload="auto"
       >
