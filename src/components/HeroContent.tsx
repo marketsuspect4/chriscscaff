@@ -63,6 +63,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
             <Button
               variant="hero-secondary"
               size="default"
+              onClick={() => navigate("/about")}
               className="flex-col h-auto py-2 gap-0.5 w-full"
             >
               <span className="text-base font-extrabold tracking-tight">
