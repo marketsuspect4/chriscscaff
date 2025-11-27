@@ -17,7 +17,6 @@ const authSchema = z.object({
 const Auth = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -49,62 +48,30 @@ const Auth = () => {
       // Validate form data
       authSchema.parse(formData);
 
-      if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email: formData.email,
-          password: formData.password,
-        });
+      const { error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+      });
 
-        if (error) {
-          if (error.message.includes("Invalid login credentials")) {
-            toast({
-              title: "Login failed",
-              description: "Invalid email or password. Please try again.",
-              variant: "destructive",
-            });
-          } else {
-            toast({
-              title: "Error",
-              description: error.message,
-              variant: "destructive",
-            });
-          }
+      if (error) {
+        if (error.message.includes("Invalid login credentials")) {
+          toast({
+            title: "Login failed",
+            description: "Invalid email or password. Please try again.",
+            variant: "destructive",
+          });
         } else {
           toast({
-            title: "Welcome back!",
-            description: "You've successfully logged in.",
+            title: "Error",
+            description: error.message,
+            variant: "destructive",
           });
         }
       } else {
-        const { error } = await supabase.auth.signUp({
-          email: formData.email,
-          password: formData.password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/dashboard`,
-          },
+        toast({
+          title: "Welcome back!",
+          description: "You've successfully logged in.",
         });
-
-        if (error) {
-          if (error.message.includes("already registered")) {
-            toast({
-              title: "Account exists",
-              description: "This email is already registered. Please log in instead.",
-              variant: "destructive",
-            });
-          } else {
-            toast({
-              title: "Error",
-              description: error.message,
-              variant: "destructive",
-            });
-          }
-        } else {
-          toast({
-            title: "Account created!",
-            description: "Please check your email to verify your account.",
-          });
-          setIsLogin(true);
-        }
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -139,10 +106,10 @@ const Auth = () => {
         {/* Auth Card */}
         <div className="bg-card border border-border rounded-2xl p-8">
           <h1 className="text-3xl font-extrabold text-foreground mb-2">
-            {isLogin ? "WELCOME BACK" : "CREATE ACCOUNT"}
+            WELCOME BACK
           </h1>
           <p className="text-muted-foreground mb-8">
-            {isLogin ? "Log in to manage your projects" : "Sign up to get started"}
+            Log in to manage your projects
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -174,11 +141,6 @@ const Auth = () => {
                 className="h-14 bg-background border-border text-foreground"
                 required
               />
-              {!isLogin && (
-                <p className="text-xs text-muted-foreground mt-2">
-                  Must be at least 6 characters
-                </p>
-              )}
             </div>
 
             <Button
@@ -188,18 +150,9 @@ const Auth = () => {
               className="w-full h-14 font-extrabold text-lg"
               disabled={loading}
             >
-              {loading ? "PLEASE WAIT..." : isLogin ? "LOG IN" : "SIGN UP"}
+              {loading ? "PLEASE WAIT..." : "LOG IN"}
             </Button>
           </form>
-
-          <div className="mt-6 text-center">
-            <button
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-sm text-primary hover:text-primary/80 font-semibold"
-            >
-              {isLogin ? "Don't have an account? Sign up" : "Already have an account? Log in"}
-            </button>
-          </div>
         </div>
       </motion.div>
     </div>
