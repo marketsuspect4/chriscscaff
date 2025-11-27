@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 interface HeroContentProps {
   show: boolean;
@@ -12,24 +11,11 @@ export const HeroContent = ({ show }: HeroContentProps) => {
 
   return (
     <motion.div
-      className="relative z-10 flex flex-col items-center justify-end min-h-screen px-4 pb-16"
+      className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8"
-      >
-        <img 
-          src={logo} 
-          alt="Chris.C Scaffolding" 
-          className="w-40 md:w-48 h-auto drop-shadow-2xl"
-        />
-      </motion.div>
-
       <motion.div
         className="flex flex-col items-center gap-4 w-full max-w-md"
         initial={{ opacity: 0, y: 20 }}
