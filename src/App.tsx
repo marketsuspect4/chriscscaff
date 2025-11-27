@@ -15,6 +15,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const QuoteSelection = lazy(() => import("./pages/QuoteSelection"));
 const QuickEstimate = lazy(() => import("./pages/QuickEstimate"));
 const AccurateQuote = lazy(() => import("./pages/AccurateQuote"));
+const About = lazy(() => import("./pages/About"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -41,6 +42,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} errorElement={<RouteErrorBoundary />} />
               <Route path="/auth" element={<Auth />} errorElement={<RouteErrorBoundary />} />
+              <Route path="/about" element={<About />} errorElement={<RouteErrorBoundary />} />
               <Route path="/dashboard" element={<Dashboard />} errorElement={<RouteErrorBoundary />} />
               <Route path="/quote-selection" element={<QuoteSelection />} errorElement={<RouteErrorBoundary />} />
               <Route path="/quick-estimate" element={<QuickEstimate />} errorElement={<RouteErrorBoundary />} />
