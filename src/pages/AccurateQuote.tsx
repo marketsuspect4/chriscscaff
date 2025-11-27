@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
+import { validateRequired, validatePhone, ValidationError } from "@/lib/error-handler";
 
 interface Section {
   id: string;
@@ -28,22 +30,63 @@ const AccurateQuote = () => {
     boardWidth: "5" as "3" | "4" | "5",
   });
   const [showSectionForm, setShowSectionForm] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSaveSection = () => {
-    if (currentSection.name && currentSection.height && currentSection.length) {
-      const newSection: Section = {
-        id: Date.now().toString(),
-        ...currentSection,
-      };
-      setSections([...sections, newSection]);
-      setCurrentSection({
-        name: "",
-        height: "",
-        length: "",
-        boardWidth: "5",
-      });
-      setShowSectionForm(false);
+    const newErrors: Record<string, string> = {};
+
+    try {
+      validateRequired(currentSection.name, "Section name");
+    } catch (err) {
+      if (err instanceof ValidationError) newErrors.sectionName = err.message;
     }
+
+    try {
+      validateRequired(currentSection.height, "Height");
+      if (currentSection.height && parseFloat(currentSection.height) <= 0) {
+        newErrors.height = "Height must be greater than 0";
+      }
+    } catch (err) {
+      if (err instanceof ValidationError) newErrors.height = err.message;
+    }
+
+    try {
+      validateRequired(currentSection.length, "Length");
+      if (currentSection.length && parseFloat(currentSection.length) <= 0) {
+        newErrors.length = "Length must be greater than 0";
+      }
+    } catch (err) {
+      if (err instanceof ValidationError) newErrors.length = err.message;
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      toast({
+        variant: "destructive",
+        title: "Validation Error",
+        description: "Please fill in all section details correctly.",
+      });
+      return;
+    }
+
+    const newSection: Section = {
+      id: Date.now().toString(),
+      ...currentSection,
+    };
+    setSections([...sections, newSection]);
+    setCurrentSection({
+      name: "",
+      height: "",
+      length: "",
+      boardWidth: "5",
+    });
+    setShowSectionForm(false);
+    setErrors({});
+    
+    toast({
+      title: "Section Added",
+      description: `${newSection.name} has been added successfully.`,
+    });
   };
 
   return (
@@ -89,9 +132,17 @@ const AccurateQuote = () => {
                   id="name"
                   placeholder="Joe Bloggs"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="h-14 bg-card border-border text-foreground placeholder:text-muted-foreground/50"
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    if (errors.name) setErrors({ ...errors, name: "" });
+                  }}
+                  className={`h-14 bg-card border-border text-foreground placeholder:text-muted-foreground/50 ${
+                    errors.name ? "border-destructive" : ""
+                  }`}
                 />
+                {errors.name && (
+                  <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                )}
               </div>
               <div>
                 <Label htmlFor="phone" className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3 block">
@@ -101,9 +152,17 @@ const AccurateQuote = () => {
                   id="phone"
                   placeholder="07700 900000"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="h-14 bg-card border-border text-foreground placeholder:text-muted-foreground/50"
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                    if (errors.phone) setErrors({ ...errors, phone: "" });
+                  }}
+                  className={`h-14 bg-card border-border text-foreground placeholder:text-muted-foreground/50 ${
+                    errors.phone ? "border-destructive" : ""
+                  }`}
                 />
+                {errors.phone && (
+                  <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                )}
               </div>
             </div>
           </div>
@@ -140,9 +199,17 @@ const AccurateQuote = () => {
                     id="sectionName"
                     placeholder="e.g. Rear Chimney"
                     value={currentSection.name}
-                    onChange={(e) => setCurrentSection({ ...currentSection, name: e.target.value })}
-                    className="h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50"
+                    onChange={(e) => {
+                      setCurrentSection({ ...currentSection, name: e.target.value });
+                      if (errors.sectionName) setErrors({ ...errors, sectionName: "" });
+                    }}
+                    className={`h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50 ${
+                      errors.sectionName ? "border-destructive" : ""
+                    }`}
                   />
+                  {errors.sectionName && (
+                    <p className="text-sm text-destructive mt-1">{errors.sectionName}</p>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -155,9 +222,17 @@ const AccurateQuote = () => {
                       type="number"
                       placeholder="6"
                       value={currentSection.height}
-                      onChange={(e) => setCurrentSection({ ...currentSection, height: e.target.value })}
-                      className="h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50"
+                      onChange={(e) => {
+                        setCurrentSection({ ...currentSection, height: e.target.value });
+                        if (errors.height) setErrors({ ...errors, height: "" });
+                      }}
+                      className={`h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50 ${
+                        errors.height ? "border-destructive" : ""
+                      }`}
                     />
+                    {errors.height && (
+                      <p className="text-sm text-destructive mt-1">{errors.height}</p>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="length" className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3 block">
@@ -168,9 +243,17 @@ const AccurateQuote = () => {
                       type="number"
                       placeholder="10"
                       value={currentSection.length}
-                      onChange={(e) => setCurrentSection({ ...currentSection, length: e.target.value })}
-                      className="h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50"
+                      onChange={(e) => {
+                        setCurrentSection({ ...currentSection, length: e.target.value });
+                        if (errors.length) setErrors({ ...errors, length: "" });
+                      }}
+                      className={`h-14 bg-background border-border text-foreground placeholder:text-muted-foreground/50 ${
+                        errors.length ? "border-destructive" : ""
+                      }`}
                     />
+                    {errors.length && (
+                      <p className="text-sm text-destructive mt-1">{errors.length}</p>
+                    )}
                   </div>
                 </div>
 
