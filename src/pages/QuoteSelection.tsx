@@ -7,7 +7,7 @@ const QuoteSelection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background p-4">
+    <div className="min-h-screen bg-[hsl(220,25%,18%)] p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

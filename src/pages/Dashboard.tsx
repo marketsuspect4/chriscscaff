@@ -11,7 +11,7 @@ const Dashboard = () => {
   const userName = "Mr Smith";
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[hsl(220,25%,18%)]">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

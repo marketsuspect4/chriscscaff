@@ -90,7 +90,7 @@ const AccurateQuote = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-24">
+    <div className="min-h-screen bg-[hsl(220,25%,18%)] pb-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -313,7 +313,7 @@ const AccurateQuote = () => {
 
       {/* Submit Button - Fixed at bottom */}
       {sections.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-sm border-t border-border">
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-[hsl(220,25%,18%)]/95 backdrop-blur-sm border-t border-border">
           <div className="max-w-2xl mx-auto">
             <Button
               variant="hero"
