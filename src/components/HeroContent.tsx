@@ -36,13 +36,13 @@ export const HeroContent = ({ show }: HeroContentProps) => {
             variant="hero"
             size="lg"
             onClick={() => navigate("/quote-selection")}
-            className="w-full flex-col h-auto py-6 gap-1"
+            className="w-full flex-col h-auto py-4 gap-1"
           >
-            <span className="text-2xl font-extrabold tracking-tight">
+            <span className="text-lg font-extrabold tracking-tight">
               GET A QUOTE
             </span>
-            <span className="flex items-center gap-2 text-sm font-semibold opacity-90">
-              <Zap className="w-4 h-4" />
+            <span className="flex items-center gap-2 text-xs font-semibold opacity-90">
+              <Zap className="w-3 h-3" />
               Same Day Response
             </span>
           </Button>
@@ -63,9 +63,9 @@ export const HeroContent = ({ show }: HeroContentProps) => {
             <Button
               variant="hero-secondary"
               size="default"
-              className="flex-col h-auto py-4 gap-0.5 w-full"
+              className="flex-col h-auto py-3 gap-0.5 w-full"
             >
-              <span className="text-base font-extrabold tracking-tight">
+              <span className="text-sm font-extrabold tracking-tight">
                 TAKE A LOOK
               </span>
               <span className="text-xs font-medium opacity-80">
@@ -88,9 +88,9 @@ export const HeroContent = ({ show }: HeroContentProps) => {
               variant="hero-secondary"
               size="default"
               onClick={() => navigate("/dashboard")}
-              className="flex-col h-auto py-4 gap-0.5 w-full"
+              className="flex-col h-auto py-3 gap-0.5 w-full"
             >
-              <span className="text-base font-extrabold tracking-tight">
+              <span className="text-sm font-extrabold tracking-tight">
                 LOG IN
               </span>
               <span className="text-xs font-medium opacity-80">
