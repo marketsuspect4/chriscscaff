@@ -12,7 +12,7 @@ const Index = () => {
       
       {/* Logo at top */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
-        <img src={logo} alt="Logo" className="h-16 md:h-20 w-auto" />
+        <img src={logo} alt="Logo" className="h-24 md:h-32 w-auto" />
       </div>
       
       <HeroContent show={showContent} />
