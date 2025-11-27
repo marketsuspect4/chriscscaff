@@ -52,7 +52,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
         </Button>
 
         {/* Secondary Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-md">
+        <div className="grid grid-cols-2 gap-4 w-full max-w-md">
           <Button
             variant="hero-secondary"
             size="xl"
