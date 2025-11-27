@@ -1,57 +1,46 @@
-import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 interface VideoBackgroundProps {
-  onVideoEnd: () => void;
+  onVideoReady: () => void;
 }
 
-export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
+export const VideoBackground = ({ onVideoReady }: VideoBackgroundProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoEnded, setIsVideoEnded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleEnded = () => {
-      setIsVideoEnded(true);
-      onVideoEnd();
+    const handleCanPlay = () => {
+      onVideoReady();
     };
 
-    video.addEventListener("ended", handleEnded);
+    video.addEventListener("canplay", handleCanPlay);
     
     // Ensure video plays
     video.play().catch(err => {
       console.log("Video autoplay prevented:", err);
-      // If autoplay fails, still show content after a delay
-      setTimeout(() => {
-        setIsVideoEnded(true);
-        onVideoEnd();
-      }, 100);
+      onVideoReady();
     });
 
     return () => {
-      video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("canplay", handleCanPlay);
     };
-  }, [onVideoEnd]);
+  }, [onVideoReady]);
 
   return (
-    <motion.div
-      className="fixed inset-0 z-0"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: isVideoEnded ? 0 : 1 }}
-      transition={{ duration: 1, delay: isVideoEnded ? 0.5 : 0 }}
-    >
+    <div className="fixed inset-0 z-0">
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
         muted
+        loop
         playsInline
         preload="auto"
       >
         <source src="/videos/hero-animation.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/20" />
-    </motion.div>
+      <div className="absolute inset-0 bg-black/30" />
+    </div>
   );
 };
