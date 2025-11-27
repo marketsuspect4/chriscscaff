@@ -59,9 +59,6 @@ const About = () => {
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-gold bg-clip-text text-transparent">
             Chris.C Scaffolding
           </h1>
-          <p className="text-xl md:text-2xl text-brand-steel-light mb-8 max-w-3xl mx-auto">
-            Building Your Future, Safely
-          </p>
         </motion.div>
       </div>
 
