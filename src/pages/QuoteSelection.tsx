@@ -2,22 +2,16 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Zap, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
 
 const QuoteSelection = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background p-4">
-      {/* Logo */}
-      <div className="flex justify-center pt-6 pb-4">
-        <img src={logo} alt="Logo" className="h-20 md:h-24 w-auto" />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-2xl mx-auto pt-4"
+        className="max-w-2xl mx-auto pt-8"
       >
         {/* Header */}
         <div className="flex items-center gap-4 mb-12">

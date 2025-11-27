@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
 
 interface Section {
   id: string;
@@ -49,11 +48,6 @@ const AccurateQuote = () => {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      {/* Logo */}
-      <div className="flex justify-center pt-6 pb-2">
-        <img src={logo} alt="Logo" className="h-16 md:h-20 w-auto" />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
