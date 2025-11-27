@@ -2,13 +2,54 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import { Home, Clock, Hammer, Plus, AlertCircle, LogOut } from "lucide-react";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isChangesDialogOpen, setIsChangesDialogOpen] = useState(false);
+  const [selectedJob, setSelectedJob] = useState("");
+  const [contactMethod, setContactMethod] = useState("");
+  const [changeDescription, setChangeDescription] = useState("");
 
   // Template data - no authentication required
   const userName = "Mr Smith";
+
+  const ongoingJobs = [
+    { id: "1", address: "42 Riverside Drive", type: "Extension" },
+    { id: "2", address: "19 High Street", type: "Chimney Stack Repair" }
+  ];
+
+  const handleSubmitChanges = () => {
+    if (!selectedJob || !contactMethod || !changeDescription) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Close the form dialog
+    setIsChangesDialogOpen(false);
+    
+    // Reset form
+    setSelectedJob("");
+    setContactMethod("");
+    setChangeDescription("");
+
+    // Show success message
+    toast({
+      title: "Request Submitted",
+      description: "We aim to respond within 24 hours",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[hsl(0,0%,8%)] via-[hsl(0,0%,12%)] to-[hsl(200,8%,15%)]">
@@ -184,6 +225,7 @@ const Dashboard = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
+            onClick={() => setIsChangesDialogOpen(true)}
             className="group bg-gradient-to-br from-brand-black/60 to-brand-dark/60 backdrop-blur-sm border-2 border-brand-steel/40 hover:border-brand-gold/50 rounded-2xl p-8 text-left transition-all hover:shadow-[var(--shadow-steel)] hover:scale-[1.02]"
           >
             <div className="flex items-start gap-4 mb-4">
@@ -197,6 +239,75 @@ const Dashboard = () => {
             </p>
           </motion.button>
         </div>
+
+        {/* Need Changes Dialog */}
+        <Dialog open={isChangesDialogOpen} onOpenChange={setIsChangesDialogOpen}>
+          <DialogContent className="bg-gradient-to-br from-brand-black to-brand-dark border-2 border-brand-gold/30 text-foreground max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-extrabold text-brand-gold">Request Changes</DialogTitle>
+              <DialogDescription className="text-brand-steel-light">
+                Let us know what changes you need for your project
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-4 py-4">
+              <div className="space-y-2">
+                <Label htmlFor="job" className="text-brand-gold-light font-semibold">Select Job</Label>
+                <Select value={selectedJob} onValueChange={setSelectedJob}>
+                  <SelectTrigger id="job" className="bg-brand-dark/50 border-brand-steel/30 text-foreground">
+                    <SelectValue placeholder="Choose a job" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-brand-dark border-brand-steel/30">
+                    {ongoingJobs.map((job) => (
+                      <SelectItem key={job.id} value={job.id} className="text-foreground hover:bg-brand-gold/20">
+                        {job.address} - {job.type}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="contact" className="text-brand-gold-light font-semibold">Preferred Contact Method</Label>
+                <Input
+                  id="contact"
+                  placeholder="e.g., Phone: 07123 456789 or Email: user@example.com"
+                  value={contactMethod}
+                  onChange={(e) => setContactMethod(e.target.value)}
+                  className="bg-brand-dark/50 border-brand-steel/30 text-foreground placeholder:text-brand-steel-light"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="description" className="text-brand-gold-light font-semibold">Description of Changes</Label>
+                <Textarea
+                  id="description"
+                  placeholder="Please describe the changes you'd like to request..."
+                  value={changeDescription}
+                  onChange={(e) => setChangeDescription(e.target.value)}
+                  rows={5}
+                  className="bg-brand-dark/50 border-brand-steel/30 text-foreground placeholder:text-brand-steel-light resize-none"
+                />
+              </div>
+            </div>
+
+            <DialogFooter>
+              <Button
+                variant="outline"
+                onClick={() => setIsChangesDialogOpen(false)}
+                className="border-brand-steel/40 text-brand-steel-light hover:bg-brand-steel/20"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleSubmitChanges}
+                className="bg-gradient-to-r from-brand-gold to-brand-gold-light text-brand-black font-bold hover:opacity-90"
+              >
+                Submit Request
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       </motion.div>
     </div>
   );
