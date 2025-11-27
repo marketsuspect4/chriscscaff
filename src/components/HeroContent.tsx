@@ -92,7 +92,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
               className="flex-col h-auto py-2 gap-0.5 w-full"
             >
               <span className="text-base font-extrabold tracking-tight">
-                LOG IN
+                CLIENT LOG IN
               </span>
               <span className="text-xs font-medium opacity-80">
                 MANAGE JOBS
