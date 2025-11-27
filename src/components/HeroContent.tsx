@@ -14,7 +14,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
 
   return (
     <motion.div
-      className="relative z-10 flex flex-col items-center justify-end min-h-screen px-4 pb-12"
+      className="relative z-10 flex flex-col items-center justify-end min-h-screen px-4 pb-[calc(3rem+10vh)]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
