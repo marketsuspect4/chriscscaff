@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 
@@ -7,6 +8,8 @@ interface HeroContentProps {
 }
 
 export const HeroContent = ({ show }: HeroContentProps) => {
+  const navigate = useNavigate();
+  
   if (!show) return null;
 
   return (
@@ -26,6 +29,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
         <Button
           variant="hero"
           size="lg"
+          onClick={() => navigate("/quote-selection")}
           className="w-full flex-col h-auto py-4 gap-1"
         >
           <span className="text-xl font-extrabold tracking-tight">

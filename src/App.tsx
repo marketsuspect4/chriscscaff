@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import QuoteSelection from "./pages/QuoteSelection";
+import QuickEstimate from "./pages/QuickEstimate";
+import AccurateQuote from "./pages/AccurateQuote";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +19,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/quote-selection" element={<QuoteSelection />} />
+          <Route path="/quick-estimate" element={<QuickEstimate />} />
+          <Route path="/accurate-quote" element={<AccurateQuote />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
