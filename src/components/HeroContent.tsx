@@ -19,7 +19,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex flex-col items-center gap-4 w-full max-w-md">
+      <div className="flex flex-col items-center gap-4 w-full max-w-sm">
         {/* Main CTA Button */}
         <motion.div
           className="w-full"
