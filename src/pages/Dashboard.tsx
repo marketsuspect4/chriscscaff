@@ -1,53 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Home, Clock, Hammer, Plus, AlertCircle, LogOut } from "lucide-react";
-import { User } from "@supabase/supabase-js";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Check authentication
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        setUser(session.user);
-        setLoading(false);
-      } else {
-        navigate("/auth");
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session?.user) {
-        setUser(session.user);
-      } else {
-        navigate("/auth");
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate]);
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/");
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-foreground">Loading...</div>
-      </div>
-    );
-  }
-
-  // Extract name from email (before @)
-  const userName = user?.email?.split("@")[0] || "User";
+  // Template data - no authentication required
+  const userName = "Mr Smith";
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,27 +24,17 @@ const Dashboard = () => {
               My Projects
             </h1>
             <p className="text-muted-foreground text-lg">
-              Welcome back, {userName.charAt(0).toUpperCase() + userName.slice(1)}
+              Welcome back, {userName}
             </p>
           </div>
-          <div className="flex gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate("/")}
-              className="rounded-xl bg-card border border-border hover:bg-card/80"
-            >
-              <Home className="w-5 h-5 text-brand-gold" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleSignOut}
-              className="rounded-xl bg-card border border-border hover:bg-card/80"
-            >
-              <LogOut className="w-5 h-5 text-muted-foreground" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate("/")}
+            className="rounded-xl bg-card border border-border hover:bg-card/80"
+          >
+            <Home className="w-5 h-5 text-brand-gold" />
+          </Button>
         </div>
 
         {/* Next Site Visit */}
