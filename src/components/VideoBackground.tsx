@@ -11,6 +11,15 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Prevent double-play in React StrictMode / dev by using a global flag
+    const win = window as typeof window & { __heroVideoInitialized?: boolean };
+    if (win.__heroVideoInitialized) {
+      // If we've already initialized once in this session, just reveal content
+      onVideoEnd();
+      return;
+    }
+    win.__heroVideoInitialized = true;
+
     const handleEnded = () => {
       onVideoEnd();
     };
