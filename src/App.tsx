@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { RouteErrorBoundary } from "@/components/RouteErrorBoundary";
 import { LoadingFallback } from "@/components/LoadingFallback";
-import { Header } from "@/components/Header";
 import Index from "./pages/Index";
 
 // Lazy load routes for better performance
@@ -38,7 +37,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Header />
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
               <Route path="/" element={<Index />} errorElement={<RouteErrorBoundary />} />
