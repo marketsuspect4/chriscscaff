@@ -85,7 +85,7 @@ const QuickEstimate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[hsl(220,25%,18%)]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ const QuickEstimate = () => {
       </motion.div>
 
       {/* Submit Button - Fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-sm border-t border-border">
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[hsl(220,25%,18%)]/95 backdrop-blur-sm border-t border-border">
         <div className="max-w-2xl mx-auto">
           <Button
             onClick={onSubmit}
