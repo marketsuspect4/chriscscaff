@@ -35,7 +35,7 @@ export const HeroContent = ({ show }: HeroContentProps) => {
           <Button
             variant="hero"
             size="lg"
-            onClick={() => window.open("https://proscaff.lovable.app/", "_blank")}
+            onClick={() => window.open("https://scaffquote.lovable.app", "_blank")}
             className="w-full flex-col h-auto py-3 gap-1"
           >
             <span className="text-2xl font-extrabold tracking-tight">
