@@ -23,13 +23,14 @@ export const HeroContent = ({ show }: HeroContentProps) => {
         {/* Main CTA Button */}
         <motion.div
           className="w-full"
-          initial={{ opacity: 0, scale: 0.8, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.3, y: 80, rotateX: 45 }}
+          animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
           transition={{ 
             type: "spring", 
-            stiffness: 200, 
-            damping: 20,
-            delay: 0.3 
+            stiffness: 120, 
+            damping: 12,
+            delay: 0.3,
+            mass: 1.2
           }}
         >
           <Button
@@ -51,13 +52,14 @@ export const HeroContent = ({ show }: HeroContentProps) => {
         {/* Secondary Buttons */}
         <div className="grid grid-cols-2 gap-3 w-full">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: -30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.2, x: -100, rotate: -15 }}
+            animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
             transition={{ 
               type: "spring", 
-              stiffness: 200, 
-              damping: 20,
-              delay: 0.5 
+              stiffness: 100, 
+              damping: 10,
+              delay: 0.6,
+              mass: 1.5
             }}
           >
             <Button
@@ -76,13 +78,14 @@ export const HeroContent = ({ show }: HeroContentProps) => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.2, x: 100, rotate: 15 }}
+            animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
             transition={{
               type: "spring",
-              stiffness: 200,
-              damping: 20,
-              delay: 0.5
+              stiffness: 100,
+              damping: 10,
+              delay: 0.6,
+              mass: 1.5
             }}
           >
             <Button
