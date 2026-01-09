@@ -65,6 +65,9 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
         muted
         playsInline
         preload="auto"
+        onLoadedMetadata={(e) => {
+          (e.target as HTMLVideoElement).playbackRate = 0.6;
+        }}
       >
         <source src="/videos/hero-animation.mp4" type="video/mp4" />
       </video>
