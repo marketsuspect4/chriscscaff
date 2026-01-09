@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 
 interface VideoBackgroundProps {
   onVideoEnd: () => void;
@@ -7,48 +7,52 @@ interface VideoBackgroundProps {
 export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
+  const hasEndedRef = useRef(false);
+
+  const handleVideoEnd = useCallback(() => {
+    if (!hasEndedRef.current) {
+      hasEndedRef.current = true;
+      onVideoEnd();
+    }
+  }, [onVideoEnd]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Prevent double-play in React StrictMode / dev by using a global flag
-    const win = window as typeof window & { __heroVideoInitialized?: boolean };
-    if (win.__heroVideoInitialized) {
-      // If we've already initialized once in this session, just reveal content
-      onVideoEnd();
-      return;
-    }
-    win.__heroVideoInitialized = true;
-
     const handleEnded = () => {
-      onVideoEnd();
+      handleVideoEnd();
     };
 
     const handleError = () => {
       console.error("Video failed to load");
       setHasError(true);
-      // Show content immediately if video fails
-      onVideoEnd();
+      handleVideoEnd();
+    };
+
+    const handleCanPlay = () => {
+      video.playbackRate = 0.6;
+      video.play().catch(err => {
+        console.log("Video autoplay prevented:", err);
+        setTimeout(handleVideoEnd, 100);
+      });
     };
 
     video.addEventListener("ended", handleEnded);
     video.addEventListener("error", handleError);
-    
-    // Ensure video plays
-    video.play().catch(err => {
-      console.log("Video autoplay prevented:", err);
-      // If autoplay fails, still show content after a delay
-      setTimeout(() => {
-        onVideoEnd();
-      }, 100);
-    });
+    video.addEventListener("canplay", handleCanPlay);
+
+    // If video is already ready, try to play
+    if (video.readyState >= 3) {
+      handleCanPlay();
+    }
 
     return () => {
       video.removeEventListener("ended", handleEnded);
       video.removeEventListener("error", handleError);
+      video.removeEventListener("canplay", handleCanPlay);
     };
-  }, [onVideoEnd]);
+  }, [handleVideoEnd]);
 
   // Fallback gradient background if video fails
   if (hasError) {
@@ -65,9 +69,6 @@ export const VideoBackground = ({ onVideoEnd }: VideoBackgroundProps) => {
         muted
         playsInline
         preload="auto"
-        onLoadedMetadata={(e) => {
-          (e.target as HTMLVideoElement).playbackRate = 0.6;
-        }}
       >
         <source src="/videos/hero-animation.mp4" type="video/mp4" />
       </video>
